@@ -6,7 +6,7 @@ Summary:	Thread-pool controls
 Summary(pl.UTF-8):	Sterowanie pulą wątków
 Name:		python3-threadpoolctl
 Version:	2.0.0
-Release:	3
+Release:	4
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/threadpoolctl/

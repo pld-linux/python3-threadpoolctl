@@ -5,21 +5,22 @@
 Summary:	Thread-pool controls
 Summary(pl.UTF-8):	Sterowanie pulą wątków
 Name:		python3-threadpoolctl
-Version:	2.0.0
-Release:	5
+# 3.1.0 requires flit to build
+Version:	3.0.0
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/threadpoolctl/
 Source0:	https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
-# Source0-md5:	99bfceb7a7e9547c0ae98d74e382f328
+# Source0-md5:	7ea59df7897f267528e9254552ab004c
 URL:		https://pypi.org/project/threadpoolctl/
+BuildRequires:	python3-modules >= 1:3.6
 %if %{with tests}
 BuildRequires:	python3-pytest
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
-BuildRequires:	python3-modules >= 1:3.5
-Requires:	python3-modules >= 1:3.5
+Requires:	python3-modules >= 1:3.6
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -48,6 +49,7 @@ przy problemach ze zbyt dużym obciążeniem.
 %py3_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 PYTHONPATH=$(pwd) \
 %{__python3} -m pytest tests
 %endif

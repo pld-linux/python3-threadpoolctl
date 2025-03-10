@@ -7,7 +7,7 @@ Summary(pl.UTF-8):	Sterowanie pulą wątków
 Name:		python3-threadpoolctl
 # 3.1.0 requires flit to build
 Version:	3.0.0
-Release:	1
+Release:	2
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/threadpoolctl/

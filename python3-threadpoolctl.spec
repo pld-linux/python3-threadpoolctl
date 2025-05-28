@@ -5,15 +5,16 @@
 Summary:	Thread-pool controls
 Summary(pl.UTF-8):	Sterowanie pulą wątków
 Name:		python3-threadpoolctl
-# 3.1.0 requires flit to build
-Version:	3.0.0
-Release:	3
+Version:	3.6.0
+Release:	1
 License:	BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/threadpoolctl/
 Source0:	https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-%{version}.tar.gz
-# Source0-md5:	7ea59df7897f267528e9254552ab004c
+# Source0-md5:	201b8ab8d03c9154d24290fa8dccee85
 URL:		https://pypi.org/project/threadpoolctl/
+BuildRequires:	python3-build
+BuildRequires:	python3-installer
 BuildRequires:	python3-modules >= 1:3.6
 %if %{with tests}
 BuildRequires:	python3-pytest
@@ -46,7 +47,7 @@ przy problemach ze zbyt dużym obciążeniem.
 %setup -q -n threadpoolctl-%{version}
 
 %build
-%py3_build
+%py3_build_pyproject
 
 %if %{with tests}
 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
@@ -57,14 +58,14 @@ PYTHONPATH=$(pwd) \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%py3_install
+%py3_install_pyproject
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc CHANGES.md LICENSE README.md multiple_openmp.md
+%doc README.md
 %{py3_sitescriptdir}/threadpoolctl.py
 %{py3_sitescriptdir}/__pycache__/threadpoolctl.cpython-*.py[co]
-%{py3_sitescriptdir}/threadpoolctl-%{version}-py*.egg-info
+%{py3_sitescriptdir}/threadpoolctl-%{version}.dist-info
